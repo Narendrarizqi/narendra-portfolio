@@ -11,11 +11,11 @@ Repositori ini berisi kode sumber untuk website portfolio personal **Bagus Naren
 
 ### Fitur Utama
 
-1. **🎮 Interactive 3D Macropad & 3D Bongo Cat**
-   - Macropad mekanikal 12-key (layout 3x4) dalam perspektif 3D isometrik dengan logo vektor resmi masing-masing teknologi.
-   - Dilengkapi karakter **3D Bongo Cat** yang berada di bidang perspektif yang sama, melakukan auto-typing acak saat pertama kali dilihat, dan merespons ketukan/klik pengguna.
-   - Sintesis audio switch mekanikal (*thock click*) menggunakan **Web Audio API** native tanpa dependensi file audio eksternal (dilengkapi tombol toggle mute).
-   - HUD interaktif yang menampilkan nama skill, deskripsi teknis, dan tautan langsung ke bukti proyek nyata.
+1. **🎮 Interactive 3D Macropad Showcase (v1.1)**
+   - Custom mechanical macropad 16-key (layout 4x4) dalam perspektif 3D isometrik dengan keycap solid berwarna cerah (*vibrant matte blocks*) dan logo vektor teknologi putih (*monochrome crisp vectors*).
+   - Dilengkapi title timbul 3D *'SKILLS'* pada chassis keyboard mekanikal.
+   - Respon hover dan sentuhan instan dengan efek audio switch mekanikal (*thock click*) menggunakan **Web Audio API** native tanpa dependensi eksternal (dilengkapi tombol toggle mute).
+   - HUD interaktif yang menampilkan kategori skill, deskripsi teknis, dan tautan langsung ke bukti proyek nyata.
 
 2. **📋 Detailed Grid Mode (Accessible Fallback)**
    - Mode alternatif terstruktur berdasarkan kategori (Frontend, Backend, Database, Data Management, Tools) yang ramah screen-reader dan ATS.

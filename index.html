@@ -263,58 +263,16 @@
             </div>
 
             <div class="macropad-stage" id="macropad-stage">
-              <!-- 3D Macropad Chassis (with integrated 3D Bongo Cat) -->
+              <!-- 3D Macropad Chassis (matching reference design) -->
               <div class="macropad-chassis" id="macropad-chassis">
-                <!-- 3D Bongo Cat in the same isometric perspective plane -->
-                <div class="bongo-cat-3d" id="bongo-cat-3d" aria-hidden="true">
-                  <svg class="bongo-cat-svg-3d" viewBox="0 0 220 135" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="catBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#ffffff"/>
-                        <stop offset="70%" stop-color="#f1f5f9"/>
-                        <stop offset="100%" stop-color="#cbd5e1"/>
-                      </linearGradient>
-                      <linearGradient id="catEarLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#fda4af"/>
-                        <stop offset="100%" stop-color="#f43f5e"/>
-                      </linearGradient>
-                      <linearGradient id="catEarRight" x1="100%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#fda4af"/>
-                        <stop offset="100%" stop-color="#f43f5e"/>
-                      </linearGradient>
-                      <filter id="catDropShadow" x="-10%" y="-10%" width="140%" height="140%">
-                        <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000000" flood-opacity="0.5"/>
-                      </filter>
-                    </defs>
-                    <!-- Cat Body 3D -->
-                    <path class="bongo-body-3d" filter="url(#catDropShadow)" d="M 45 125 C 38 75, 52 35, 68 22 C 75 16, 84 12, 92 24 C 104 18, 116 18, 128 24 C 136 12, 145 16, 152 22 C 168 35, 182 75, 175 125 Z" fill="url(#catBodyGrad)" stroke="#1e293b" stroke-width="4" stroke-linejoin="round"/>
-                    <!-- Inner Ears 3D -->
-                    <polygon points="74,25 84,33 76,44" fill="url(#catEarLeft)" />
-                    <polygon points="146,25 136,33 144,44" fill="url(#catEarRight)" />
-                    <!-- Cute Curved Eyes -->
-                    <path d="M 86 54 Q 93 47 100 54" fill="none" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>
-                    <path d="M 120 54 Q 127 47 134 54" fill="none" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round"/>
-                    <!-- Blushing Cheeks -->
-                    <ellipse cx="78" cy="64" rx="7" ry="4" fill="#fb7185" opacity="0.75" />
-                    <ellipse cx="142" cy="64" rx="7" ry="4" fill="#fb7185" opacity="0.75" />
-                    <!-- Cute Cat Mouth -->
-                    <path d="M 104 60 Q 110 65 116 60 Q 122 65 128 60" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
-                    <!-- Left Paw (3D) -->
-                    <g class="bongo-paw-3d bongo-paw-left" id="paw-left">
-                      <ellipse cx="80" cy="116" rx="16" ry="10" fill="#ffffff" stroke="#1e293b" stroke-width="3.5" />
-                      <ellipse cx="80" cy="117" rx="6" ry="3.5" fill="#fda4af" opacity="0.8" />
-                    </g>
-                    <!-- Right Paw (3D) -->
-                    <g class="bongo-paw-3d bongo-paw-right" id="paw-right">
-                      <ellipse cx="140" cy="116" rx="16" ry="10" fill="#ffffff" stroke="#1e293b" stroke-width="3.5" />
-                      <ellipse cx="140" cy="117" rx="6" ry="3.5" fill="#fda4af" opacity="0.8" />
-                    </g>
-                  </svg>
+                <div class="macropad-header-3d" aria-hidden="true">
+                  <span class="macropad-title-3d">SKILLS</span>
+                  <span class="macropad-sub-3d">Click / hover a key</span>
                 </div>
 
                 <div class="chassis-surface">
-                  <div class="keys-grid" id="keys-grid" role="group" aria-label="12-key Mechanical Macropad">
-                    <!-- 12 keycaps generated via data.js with tech logo icons -->
+                  <div class="keys-grid" id="keys-grid" role="group" aria-label="16-key Mechanical Macropad">
+                    <!-- 16 keycaps generated via data.js with tech logo icons -->
                   </div>
                 </div>
               </div>

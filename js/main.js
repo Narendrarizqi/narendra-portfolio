@@ -785,11 +785,9 @@
           id="key-${skill.id}" 
           aria-label="Skill ${skill.name}" 
           aria-pressed="${index === 0 ? 'true' : 'false'}"
-          style="--accent-color: ${skill.accent};">
+          style="--key-bg: ${skill.bg}; --key-dark: ${skill.darkBg}; --key-glow: ${skill.glow};">
           <span class="keycap-top">
             <span class="keycap-icon">${skill.iconSvg}</span>
-            <span class="key-label">${skill.name}</span>
-            <span class="key-accent-dot"></span>
           </span>
         </button>
       `).join('');
@@ -870,22 +868,25 @@
       if (hudEvidenceText) hudEvidenceText.textContent = skill.evidence;
 
       // Update project link
-      if (skill.projects && skill.projects.length > 0) {
-        if (hudProjectWrap) hudProjectWrap.style.display = 'flex';
-        if (hudProjectName) hudProjectName.textContent = skill.projects[0];
+      if (hudProjectWrap) {
+        hudProjectWrap.style.display = 'flex';
+        if (skill.projects && skill.projects.length > 0) {
+          hudProjectWrap.style.visibility = 'visible';
+          if (hudProjectName) hudProjectName.textContent = skill.projects[0];
 
-        if (hudProjectBtn) {
-          hudProjectBtn.onclick = (e) => {
-            e.preventDefault();
-            // Scroll to projects section smoothly
-            const projectsSec = document.getElementById('projects');
-            if (projectsSec) {
-              projectsSec.scrollIntoView({ behavior: 'smooth' });
-            }
-          };
+          if (hudProjectBtn) {
+            hudProjectBtn.onclick = (e) => {
+              e.preventDefault();
+              // Scroll to projects section smoothly
+              const projectsSec = document.getElementById('projects');
+              if (projectsSec) {
+                projectsSec.scrollIntoView({ behavior: 'smooth' });
+              }
+            };
+          }
+        } else {
+          hudProjectWrap.style.visibility = 'hidden';
         }
-      } else if (hudProjectWrap) {
-        hudProjectWrap.style.display = 'none';
       }
 
       // Update Keycaps Active State
@@ -896,49 +897,10 @@
         cap.setAttribute('aria-pressed', isCurrent ? 'true' : 'false');
       });
 
-      // Animate key press + Bongo Cat + Sound on user action
+      // Play crisp mechanical click sound on user action
       if (isUserAction) {
-        const activeCap = document.getElementById(`key-${skillId}`);
-        if (activeCap) {
-          activeCap.classList.remove('pressed');
-          void activeCap.offsetWidth; // force DOM reflow
-          activeCap.classList.add('pressed');
-          setTimeout(() => {
-            activeCap.classList.remove('pressed');
-          }, 110);
-        }
-
-        this.triggerBongoTap(skillId);
         MechanicalAudio.playClick();
       }
-    },
-
-    triggerBongoTap(skillId) {
-      const pawLeft = document.getElementById('paw-left');
-      const pawRight = document.getElementById('paw-right');
-      if (!pawLeft || !pawRight) return;
-
-      // Determine paw based on 4-column layout
-      // Left columns (0, 1): Paw Left
-      // Right columns (2, 3): Paw Right
-      const skillIndex = PORTFOLIO_DATA.macropadSkills.findIndex(s => s.id === skillId);
-      let targetPaw;
-      if (skillIndex !== -1) {
-        const col = skillIndex % 4;
-        targetPaw = (col <= 1) ? pawLeft : pawRight;
-      } else {
-        this.pawToggle = !this.pawToggle;
-        targetPaw = this.pawToggle ? pawLeft : pawRight;
-      }
-
-      targetPaw.classList.remove('tap');
-      void targetPaw.offsetWidth; // force DOM reflow so rapid tapping never misses
-      targetPaw.classList.add('tap');
-
-      clearTimeout(targetPaw._tapTimer);
-      targetPaw._tapTimer = setTimeout(() => {
-        targetPaw.classList.remove('tap');
-      }, 100);
     },
 
     setupKeyListeners() {
