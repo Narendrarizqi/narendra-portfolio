@@ -1,0 +1,7 @@
+# Dependencies and OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Reference materials
+reference_video.mp4
