@@ -528,20 +528,79 @@
   // ======================== MECHANICAL SWITCH AUDIO ========================
   const MechanicalAudio = {
     ctx: null,
+    masterGain: null,
+    compressor: null,
+    filter: null,
     enabled: localStorage.getItem('portfolio-macropad-audio') !== 'false',
+    lastPlayTime: 0,
 
     init() {
       const btn = document.getElementById('sound-toggle-btn');
-      if (!btn) return;
-
-      this.updateUI(btn);
-
-      btn.addEventListener('click', () => {
-        this.enabled = !this.enabled;
-        localStorage.setItem('portfolio-macropad-audio', this.enabled);
+      if (btn) {
         this.updateUI(btn);
-        if (this.enabled) this.playClick();
+
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.enabled = !this.enabled;
+          localStorage.setItem('portfolio-macropad-audio', this.enabled);
+          this.updateUI(btn);
+          if (this.enabled) {
+            this.ensureContext();
+            this.playClick(true);
+          }
+        });
+      }
+
+      // Eagerly unlock AudioContext on any user interaction across the page
+      const unlockAudio = () => {
+        this.ensureContext();
+        ['pointerdown', 'pointermove', 'touchstart', 'keydown', 'scroll', 'click'].forEach(evt => {
+          document.removeEventListener(evt, unlockAudio);
+        });
+      };
+      ['pointerdown', 'pointermove', 'touchstart', 'keydown', 'scroll', 'click'].forEach(evt => {
+        document.addEventListener(evt, unlockAudio, { passive: true, once: true });
       });
+    },
+
+    ensureContext() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return null;
+
+        if (!this.ctx) {
+          this.ctx = new AudioCtx();
+
+          // Master compressor for smooth dynamics and zero clipping
+          this.compressor = this.ctx.createDynamicsCompressor();
+          this.compressor.threshold.setValueAtTime(-18, this.ctx.currentTime);
+          this.compressor.knee.setValueAtTime(12, this.ctx.currentTime);
+          this.compressor.ratio.setValueAtTime(4, this.ctx.currentTime);
+          this.compressor.attack.setValueAtTime(0.003, this.ctx.currentTime);
+          this.compressor.release.setValueAtTime(0.1, this.ctx.currentTime);
+
+          // Warm low-pass filter to remove harshness and create a creamy mechanical switch sound
+          this.filter = this.ctx.createBiquadFilter();
+          this.filter.type = 'lowpass';
+          this.filter.frequency.setValueAtTime(1800, this.ctx.currentTime);
+          this.filter.Q.setValueAtTime(1.2, this.ctx.currentTime);
+
+          // Master volume
+          this.masterGain = this.ctx.createGain();
+          this.masterGain.gain.setValueAtTime(0.35, this.ctx.currentTime);
+
+          this.filter.connect(this.compressor);
+          this.compressor.connect(this.masterGain);
+          this.masterGain.connect(this.ctx.destination);
+        }
+
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume().catch(() => {});
+        }
+        return this.ctx;
+      } catch (e) {
+        return null;
+      }
     },
 
     updateUI(btn) {
@@ -553,48 +612,86 @@
         if (onIcon) onIcon.style.display = 'inline-block';
         if (offIcon) offIcon.style.display = 'none';
         if (label) label.textContent = 'Audio: ON';
+        btn.classList.add('audio-active');
       } else {
         if (onIcon) onIcon.style.display = 'none';
         if (offIcon) offIcon.style.display = 'inline-block';
         if (label) label.textContent = 'Audio: OFF';
+        btn.classList.remove('audio-active');
       }
     },
 
-    playClick() {
+    playClick(force = false) {
       if (!this.enabled) return;
 
+      const nowMs = performance.now();
+      if (!force && (nowMs - this.lastPlayTime < 50)) return; // smooth throttle to avoid crackle on rapid sweeps
+      this.lastPlayTime = nowMs;
+
       try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) return;
+        const ctx = this.ensureContext();
+        if (!ctx) return;
 
-        if (!this.ctx) {
-          this.ctx = new AudioCtx();
+        if (ctx.state === 'suspended') {
+          ctx.resume().then(() => this._synthesizeSwitch(ctx)).catch(() => {});
+        } else {
+          this._synthesizeSwitch(ctx);
         }
-
-        if (this.ctx.state === 'suspended') {
-          this.ctx.resume();
-        }
-
-        const now = this.ctx.currentTime;
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-
-        // Mechanical switch "thock" sound synthesis
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(320, now);
-        osc.frequency.exponentialRampToValueAtTime(55, now + 0.024);
-
-        gain.gain.setValueAtTime(0.25, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.028);
-
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-
-        osc.start(now);
-        osc.stop(now + 0.032);
       } catch (e) {
-        // AudioContext not allowed or unsupported
+        // Safe fallback
       }
+    },
+
+    _synthesizeSwitch(ctx) {
+      const now = ctx.currentTime;
+      
+      // Subtle pitch randomization (+/- 4%) so rapid clicks sound organic and mechanical
+      const pitchVariance = 0.96 + Math.random() * 0.08;
+
+      // 1. Initial Tactile Snap (high-frequency contact impulse, 7ms)
+      const snapOsc = ctx.createOscillator();
+      const snapGain = ctx.createGain();
+      snapOsc.type = 'triangle';
+      snapOsc.frequency.setValueAtTime(780 * pitchVariance, now);
+      snapOsc.frequency.exponentialRampToValueAtTime(320 * pitchVariance, now + 0.007);
+
+      snapGain.gain.setValueAtTime(0.18, now);
+      snapGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.012);
+
+      snapOsc.connect(snapGain);
+      snapGain.connect(this.filter);
+      snapOsc.start(now);
+      snapOsc.stop(now + 0.015);
+
+      // 2. Body Switch Resonance (the smooth "thock", warm tone, 35ms)
+      const bodyOsc = ctx.createOscillator();
+      const bodyGain = ctx.createGain();
+      bodyOsc.type = 'sine';
+      bodyOsc.frequency.setValueAtTime(230 * pitchVariance, now);
+      bodyOsc.frequency.exponentialRampToValueAtTime(105 * pitchVariance, now + 0.032);
+
+      bodyGain.gain.setValueAtTime(0.4, now);
+      bodyGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.042);
+
+      bodyOsc.connect(bodyGain);
+      bodyGain.connect(this.filter);
+      bodyOsc.start(now);
+      bodyOsc.stop(now + 0.045);
+
+      // 3. Housing Bottom-Out Sub (weight & punch, 25ms)
+      const subOsc = ctx.createOscillator();
+      const subGain = ctx.createGain();
+      subOsc.type = 'triangle';
+      subOsc.frequency.setValueAtTime(92 * pitchVariance, now);
+      subOsc.frequency.exponentialRampToValueAtTime(42 * pitchVariance, now + 0.026);
+
+      subGain.gain.setValueAtTime(0.26, now);
+      subGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.035);
+
+      subOsc.connect(subGain);
+      subGain.connect(this.filter);
+      subOsc.start(now);
+      subOsc.stop(now + 0.04);
     }
   };
 
@@ -697,16 +794,57 @@
         </button>
       `).join('');
 
-      // Add click listeners to all keycaps
+      // Add hover (pointerenter/mouseenter/mouseover) and click listeners to all keycaps
       keysGrid.querySelectorAll('.keycap').forEach(btn => {
-        btn.addEventListener('click', () => {
+        const skillId = btn.dataset.skillId;
+
+        const handleHover = () => {
           this.stopAutoTyping();
-          const skillId = btn.dataset.skillId;
+          if (this.activeSkillId !== skillId) {
+            this.selectSkill(skillId, true);
+          }
+        };
+
+        // 1. Mouse / Pointer touching key instantly reveals skill contents
+        btn.addEventListener('mouseenter', handleHover);
+        btn.addEventListener('pointerenter', handleHover);
+        btn.addEventListener('mouseover', handleHover);
+
+        // 2. Click / Touch Event
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.stopAutoTyping();
           this.selectSkill(skillId, true);
+        });
+
+        // 3. Pointerdown for instant tactile response on touch devices
+        btn.addEventListener('pointerdown', (e) => {
+          if (e.pointerType === 'touch') {
+            this.stopAutoTyping();
+            this.selectSkill(skillId, true);
+          }
         });
       });
 
-      // Stop auto typing on hover / touch so user has immediate full control
+      // 4. Support smooth touch dragging across keys on mobile/touch screens
+      keysGrid.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        if (!touch) return;
+        const target = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (!target) return;
+        const btn = target.closest('.keycap');
+        if (btn && btn.dataset.skillId && btn.dataset.skillId !== this.activeSkillId) {
+          this.stopAutoTyping();
+          this.selectSkill(btn.dataset.skillId, true);
+        }
+      }, { passive: true });
+
+      // Stop auto typing on hover / touch anywhere on the 3D stage
+      const stage = document.getElementById('macropad-stage');
+      if (stage) {
+        stage.addEventListener('mouseenter', () => this.stopAutoTyping(), { passive: true });
+        stage.addEventListener('touchstart', () => this.stopAutoTyping(), { passive: true });
+      }
       keysGrid.addEventListener('mouseenter', () => this.stopAutoTyping(), { passive: true });
       keysGrid.addEventListener('touchstart', () => this.stopAutoTyping(), { passive: true });
     },
@@ -762,29 +900,45 @@
       if (isUserAction) {
         const activeCap = document.getElementById(`key-${skillId}`);
         if (activeCap) {
+          activeCap.classList.remove('pressed');
+          void activeCap.offsetWidth; // force DOM reflow
           activeCap.classList.add('pressed');
           setTimeout(() => {
             activeCap.classList.remove('pressed');
           }, 110);
         }
 
-        this.triggerBongoTap();
+        this.triggerBongoTap(skillId);
         MechanicalAudio.playClick();
       }
     },
 
-    triggerBongoTap() {
+    triggerBongoTap(skillId) {
       const pawLeft = document.getElementById('paw-left');
       const pawRight = document.getElementById('paw-right');
       if (!pawLeft || !pawRight) return;
 
-      this.pawToggle = !this.pawToggle;
-      const targetPaw = this.pawToggle ? pawLeft : pawRight;
+      // Determine paw based on 4-column layout
+      // Left columns (0, 1): Paw Left
+      // Right columns (2, 3): Paw Right
+      const skillIndex = PORTFOLIO_DATA.macropadSkills.findIndex(s => s.id === skillId);
+      let targetPaw;
+      if (skillIndex !== -1) {
+        const col = skillIndex % 4;
+        targetPaw = (col <= 1) ? pawLeft : pawRight;
+      } else {
+        this.pawToggle = !this.pawToggle;
+        targetPaw = this.pawToggle ? pawLeft : pawRight;
+      }
 
+      targetPaw.classList.remove('tap');
+      void targetPaw.offsetWidth; // force DOM reflow so rapid tapping never misses
       targetPaw.classList.add('tap');
-      setTimeout(() => {
+
+      clearTimeout(targetPaw._tapTimer);
+      targetPaw._tapTimer = setTimeout(() => {
         targetPaw.classList.remove('tap');
-      }, 90);
+      }, 100);
     },
 
     setupKeyListeners() {
@@ -830,6 +984,7 @@
 
         viewMacropad.style.display = 'grid';
         viewGrid.style.display = 'none';
+        MechanicalAudio.playClick(true);
       });
 
       btnGrid.addEventListener('click', () => {
@@ -840,6 +995,7 @@
 
         viewMacropad.style.display = 'none';
         viewGrid.style.display = 'block';
+        MechanicalAudio.playClick(true);
       });
     },
 
@@ -863,6 +1019,13 @@
           `).join('')}
         </div>
       `).join('');
+
+      // Add gentle audio feedback on detailed grid skill hover
+      grid.querySelectorAll('.skill-item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+          MechanicalAudio.playClick();
+        });
+      });
     }
   };
 
