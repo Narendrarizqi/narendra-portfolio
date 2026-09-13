@@ -466,6 +466,17 @@ const PORTFOLIO_DATA = {
 
   certificates: [
     {
+      id: "belajar-dasar-pemrograman-web",
+      title: "Belajar Dasar Pemrograman Web",
+      issuer: "Dicoding Indonesia",
+      issueDate: "Sep 2026",
+      expiryDate: "Sep 2029",
+      credentialId: "KEXLM0GNYZG2",
+      credentialUrl: "https://www.dicoding.com/certificates/KEXLM0GNYZG2",
+      description: "Kompetensi dasar pemrograman web meliputi HTML semantik, CSS layouting (Flexbox), desain responsif dengan media query, serta implementasi proyek website. Durasi belajar 41 jam.",
+      skills: ["HTML", "CSS", "Flexbox", "Responsive Design", "Web Development"]
+    },
+    {
       id: "data-driven-decision",
       title: "Data Driven-Decission",
       issuer: "MySkill",
