@@ -2,10 +2,10 @@ const PORTFOLIO_DATA = {
   personal: {
     name: "Bagus Narendra Rizqi Ananto",
     shortName: "Narendra",
-    role: "Fullstack Web Developer",
+    role: "Fullstack Web Developer & Data Analyst Enthusiast",
     subtitle: "Informatics Student",
-    bio: "Mahasiswa Teknik Informatika dengan minat pada Web Development dan Data Analytics.",
-    description: "Membangun aplikasi web dan mengembangkan solusi berbasis data melalui teknologi web, database, dan pengembangan perangkat lunak.",
+    bio: "Mahasiswa Teknik Informatika dengan fokus pada Fullstack Web Development dan Data Analytics.",
+    description: "Membangun aplikasi web modern dan solusi analitik berbasis data melalui arsitektur web terstruktur, manajemen database SQL, dan analisis data.",
     location: "Banyumas, Purwokerto",
     company: "Universitas Muhammadiyah Purwokerto",
     avatar: "https://avatars.githubusercontent.com/u/87901449?v=4",
@@ -28,8 +28,8 @@ const PORTFOLIO_DATA = {
       icon: "server"
     },
     {
-      title: "Data Management",
-      description: "Pengalaman dalam data entry, validasi data, dan pengolahan data menggunakan tools seperti Microsoft Excel dan Google Sheets.",
+      title: "Data Analytics & Management",
+      description: "Pengolahan data tabular, query SQL tingkat lanjut, pembersihan dan validasi data, serta penyusunan laporan menggunakan Google Sheets, Excel, dan MySQL.",
       icon: "database"
     },
     {
@@ -394,8 +394,10 @@ const PORTFOLIO_DATA = {
     data: {
       title: "Data Management & Analytics",
       items: [
-        { name: "Google Sheets", projectEvidence: "Data Management", description: "Cloud collaboration, validation rules, record keeping" },
-        { name: "Data Entry & Validation", projectEvidence: "Administrasi Sekolah & Organisasi", description: "Verification, consistency check, duplicate removal" }
+        { name: "Data-Driven Decision", projectEvidence: "MySkill Certification", description: "Analisis data kuantitatif untuk formulasi keputusan bisnis strategis" },
+        { name: "Data Storytelling & Insight", projectEvidence: "MySkill Certification", description: "Komunikasi insight data naratif dan visualisasi presentasi analitis" },
+        { name: "Google Sheets", projectEvidence: "Data Management & KPU", description: "Cloud collaboration, validation rules, record keeping" },
+        { name: "Data Entry & Validation", projectEvidence: "OEMAH DIGITAL & Organisasi", description: "Verification, consistency check, duplicate removal" }
       ]
     },
     tools: {
@@ -462,6 +464,77 @@ const PORTFOLIO_DATA = {
     }
   ],
 
-  certificates: []
+  certificates: [
+    {
+      id: "data-driven-decision",
+      title: "Data Driven-Decission",
+      issuer: "MySkill",
+      issueDate: "Sep 2026",
+      credentialId: "MS-20260912-9CJbVW3bRCIDevlcNrfz",
+      credentialUrl: "https://storage.googleapis.com/myskill-v2-certificates/course-k2enbVZLOOdfyZmm4jtK/JsSoVh8a2fPgxgS9tF3RvLEnk3y1-9CJbVW3bRCIDevlcNrfz.pdf",
+      description: "Penerapan analisis data kuantitatif dan kualitatif untuk perumusan keputusan strategis bisnis secara objektif dan terukur.",
+      skills: ["Data-Driven Decision", "Business Intelligence", "Decision Science"]
+    },
+    {
+      id: "data-story",
+      title: "Data Story",
+      issuer: "MySkill",
+      issueDate: "Sep 2026",
+      credentialId: "MS-20260908-JP2ZKgQLlk8ckr6dGnfc",
+      credentialUrl: "https://storage.googleapis.com/myskill-v2-certificates/course-q7KWU9WMhrjXNfJa4XNI/JsSoVh8a2fPgxgS9tF3RvLEnk3y1-JP2ZKgQLlk8ckr6dGnfc.pdf",
+      description: "Menyusun narasi komprehensif berbasis data (data storytelling) untuk mengomunikasikan temuan analitis kepada stakeholders bisnis.",
+      skills: ["Data Storytelling", "Communication", "Data Presentation"]
+    },
+    {
+      id: "data-story-vs-dashboard",
+      title: "Data Story Vs Dashboard",
+      issuer: "MySkill",
+      issueDate: "Sep 2026",
+      credentialId: "MS-20260911-wQ0XZKGKkqiR1ypPdtcm",
+      credentialUrl: "https://storage.googleapis.com/myskill-v2-certificates/course-XtzMelJZOvXo7WmjUVfj/JsSoVh8a2fPgxgS9tF3RvLEnk3y1-wQ0XZKGKkqiR1ypPdtcm.pdf",
+      description: "Komparasi serta integrasi efisiensi visualisasi dashboard interaktif dengan alur narasi presentasi analitis.",
+      skills: ["Dashboard Design", "Data Visualization", "Business Analytics"]
+    },
+    {
+      id: "data-to-insight",
+      title: "Data to Insight",
+      issuer: "MySkill",
+      issueDate: "Sep 2026",
+      credentialId: "MS-20260909-ds2PdHvbFg1PaAAIhAIW",
+      credentialUrl: "https://storage.googleapis.com/myskill-v2-certificates/course-IfblYHiiZHHYa4YCjP0a/JsSoVh8a2fPgxgS9tF3RvLEnk3y1-ds2PdHvbFg1PaAAIhAIW.pdf",
+      description: "Transformasi data mentah melalui eksplorasi, agregasi, dan pembersihan hingga menghasilkan actionable business insights.",
+      skills: ["Data Analysis", "Insight Generation", "Data Exploration"]
+    },
+    {
+      id: "understanding-data",
+      title: "Understanding Data",
+      issuer: "MySkill",
+      issueDate: "Sep 2026",
+      credentialId: "MS-20260907-qokT4zqApaLw70VnZ0nW",
+      credentialUrl: "https://storage.googleapis.com/myskill-v2-certificates/course-W0osXQQHtwWNBukgOw0s/JsSoVh8a2fPgxgS9tF3RvLEnk3y1-qokT4zqApaLw70VnZ0nW.pdf",
+      description: "Pemahaman fundamental tipe data, struktur dataset, relasi data, serta validitas data statistik dasar.",
+      skills: ["Data Fundamentals", "Data Types", "Statistical Thinking"]
+    },
+    {
+      id: "understanding-business-process",
+      title: "Understanding Business Process",
+      issuer: "MySkill",
+      issueDate: "Sep 2026",
+      credentialId: "MS-20260908-qxVv1HGPD7vf3fGRhkgt",
+      credentialUrl: "https://storage.googleapis.com/myskill-v2-certificates/course-ffJM3e1k2iFOteySYrHG/JsSoVh8a2fPgxgS9tF3RvLEnk3y1-qxVv1HGPD7vf3fGRhkgt.pdf",
+      description: "Pemodelan dan pemetaan proses bisnis operasional untuk mengidentifikasi metrik kunci (KPI) dan optimalisasi alur kerja.",
+      skills: ["Business Process", "KPI Tracking", "Operational Analysis"]
+    },
+    {
+      id: "hp-life-networking",
+      title: "Jaringan Profesional untuk Pertumbuhan Karier",
+      issuer: "HP (HP LIFE)",
+      issueDate: "Sep 2026",
+      credentialId: "c923b86a-7cf3-496a-b780-f8b40b53a80c",
+      credentialUrl: "https://www.life-global.org/certificate/c923b86a-7cf3-496a-b780-f8b40b53a80c",
+      description: "Strategi pengembangan jejaring profesional industri, kolaborasi lintas tim, dan percepatan pertumbuhan karir di industri teknologi.",
+      skills: ["Professional Networking", "Career Growth", "Cross-functional Collaboration"]
+    }
+  ]
 };
 

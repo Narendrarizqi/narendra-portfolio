@@ -1005,6 +1005,61 @@
     }
   };
 
+  const Certificates = {
+    render() {
+      const grid = document.getElementById('certificates-grid');
+      if (!grid || !PORTFOLIO_DATA.certificates) return;
+
+      if (PORTFOLIO_DATA.certificates.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-certificates reveal">
+            <div class="empty-cert-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            <h3 class="empty-cert-title">Licenses & Certifications</h3>
+            <p class="empty-cert-desc">Sertifikat dan lisensi kompetensi dapat diverifikasi secara lengkap melalui profil LinkedIn.</p>
+            <a href="https://www.linkedin.com/in/bagus-narendra-rizqi-ananto-7a8a19280/" target="_blank" rel="noopener noreferrer" class="btn btn-outline empty-cert-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>Buka Profil LinkedIn</span>
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = PORTFOLIO_DATA.certificates.map(cert => `
+        <div class="certificate-card reveal">
+          <div class="cert-header">
+            <div class="cert-badge-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            ${cert.issueDate ? `<span class="cert-date">${cert.issueDate}</span>` : ''}
+          </div>
+          <h3 class="cert-name">${cert.title}</h3>
+          <p class="cert-issuer">${cert.issuer}</p>
+          ${cert.credentialId ? `
+            <div class="cert-credential-id">
+              <span class="cert-id-label">ID Kredensial:</span>
+              <code class="cert-id-val">${cert.credentialId}</code>
+            </div>
+          ` : ''}
+          ${cert.description ? `<p class="cert-desc">${cert.description}</p>` : ''}
+          ${cert.skills && cert.skills.length > 0 ? `
+            <div class="cert-skills">
+              ${cert.skills.map(s => `<span class="cert-skill-tag">${s}</span>`).join('')}
+            </div>
+          ` : ''}
+          ${cert.credentialUrl ? `
+            <a href="${cert.credentialUrl}" target="_blank" rel="noopener noreferrer" class="cert-verify-btn">
+              <span>Lihat Kredensial</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+  };
+
   function setupEventListeners() {
 
     document.getElementById('modal-close').addEventListener('click', () => ProjectModal.close());
@@ -1050,6 +1105,7 @@
     Experience.render();
     Organizations.render();
     Education.render();
+    Certificates.render();
     setupEventListeners();
 
     requestAnimationFrame(() => {
