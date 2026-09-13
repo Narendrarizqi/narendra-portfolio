@@ -1,9 +1,3 @@
-/**
- * Portfolio Data — Bagus Narendra Rizqi Ananto
- * All data sourced from verified sources: GitHub, CV, LinkedIn
- * DO NOT add fabricated information.
- */
-
 const PORTFOLIO_DATA = {
   personal: {
     name: "Bagus Narendra Rizqi Ananto",
@@ -18,11 +12,10 @@ const PORTFOLIO_DATA = {
     social: {
       github: "https://github.com/Narendrarizqi",
       linkedin: "https://www.linkedin.com/in/bagus-narendra-rizqi-ananto-7a8a19280/",
-      email: "bagusnarendra500@gmail.com" // To be filled by user
+      email: "bagusnarendra500@gmail.com"
     }
   },
 
-  // What I Do section — capabilities based on verified experience
   capabilities: [
     {
       title: "Web Development",
@@ -46,7 +39,6 @@ const PORTFOLIO_DATA = {
     }
   ],
 
-  // Projects — sourced exclusively from GitHub
   projects: [
     {
       id: "sistem-administrasi-sekolah",
@@ -160,219 +152,218 @@ const PORTFOLIO_DATA = {
     }
   ],
 
-  // 16 Verified Skills for the 3D Mechanical Macropad (4x4 Solid-Color Keycaps Layout)
   macropadSkills: [
-    {
-      id: "laravel",
-      name: "Laravel",
-      key: "L",
-      category: "Backend",
-      description: "Framework MVC untuk arsitektur aplikasi web modern, terstruktur, aman, dan modular.",
-      projects: ["Sistem Administrasi Pembayaran SMK"],
-      evidence: "Implementasi MVC, Eloquent ORM, middleware otentikasi, dan routing terstruktur pada 15+ modul pembayaran sekolah.",
-      bg: "#ef4444",
-      darkBg: "#991b1b",
-      glow: "rgba(239, 68, 68, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M8.2 3.6l4.6 2.6v5.3l-4.6-2.6V3.6zm5.6 3.2l4.6 2.6v5.3l-4.6-2.6V6.8zM2.6 6.8l4.6 2.6v5.3l-4.6-2.6V6.8zm5.6 8.5l4.6 2.6v5.3l-4.6-2.6v-5.3zm5.6-5.3l4.6 2.6v5.3l-4.6-2.6V10zM12.8 6.2l4.6 2.6-4.6 2.6-4.6-2.6 4.6-2.6zm-5.6 3.2l4.6 2.6-4.6 2.6-4.6-2.6 4.6-2.6zm11.2 0l4.6 2.6-4.6 2.6-4.6-2.6 4.6-2.6zm-5.6 8.5l4.6 2.6-4.6 2.6-4.6-2.6 4.6-2.6z"/></svg>'
-    },
-    {
-      id: "php",
-      name: "PHP",
-      key: "P",
-      category: "Backend",
-      description: "Bahasa pemrograman server-side utama untuk logika bisnis, pengolahan data, dan REST API.",
-      projects: ["Sistem Administrasi Pembayaran SMK", "Pulpen App", "Website ATK"],
-      evidence: "Pengembangan backend server-side, integrasi database MySQL, session handling, dan endpoint REST API.",
-      bg: "#6366f1",
-      darkBg: "#4338ca",
-      glow: "rgba(99, 102, 241, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M5.2 9h2.8c1.1 0 1.9.7 1.9 1.8 0 1.2-.8 1.9-1.9 1.9H6.6L6 16H4.5L6.2 9zm2.2 2.5c.3 0 .6-.2.6-.6 0-.3-.2-.5-.6-.5H6.2l-.3 1.1h1.5zm5.8-2.5h-1.5L10 16h1.5l.5-2.5h1.1l.5 2.5h1.6l-.6-2.6c.7-.3 1.2-.9 1.2-1.9 0-1.4-.9-2.5-2.8-2.5zm-.4 3.3h-1l.3-1.9h1c.6 0 .9.3.9.9 0 .6-.3 1-.9 1zm4.1-3.3h2.8c1.1 0 1.9.7 1.9 1.8 0 1.2-.8 1.9-1.9 1.9h-1.4L18 16h-1.5l1.7-7zm2.2 2.5c.3 0 .6-.2.6-.6 0-.3-.2-.5-.6-.5h-1.2l-.3 1.1h1.5z"/></svg>'
-    },
-    {
-      id: "mysql",
-      name: "MySQL",
-      key: "M",
-      category: "Database",
-      description: "Sistem manajemen database relasional untuk menyimpan dan mengelola data aplikasi secara efisien.",
-      projects: ["Sistem Administrasi Pembayaran SMK", "Pulpen App"],
-      evidence: "Perancangan skema relasional 15+ tabel (siswa, tagihan IPP, daftar ulang, BOS, pengeluaran) dengan foreign keys & transactions.",
-      bg: "#0284c7",
-      darkBg: "#075985",
-      glow: "rgba(2, 132, 199, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M12 3c-4.4 0-8 1.3-8 3s3.6 3 8 3 8-1.3 8-3-3.6-3-8-3zm0 4.5c-3.6 0-6.5-1-6.5-1.5S8.4 4.5 12 4.5s6.5 1 6.5 1.5-2.9 1.5-6.5 1.5zM4 8v3.5c0 1.7 3.6 3 8 3s8-1.3 8-3V8c-1.8 1.3-4.7 2-8 2s-6.2-.7-8-2zm0 5.5V17c0 1.7 3.6 3 8 3s8-1.3 8-3v-3.5c-1.8 1.3-4.7 2-8 2s-6.2-.7-8-2z"/></svg>'
-    },
-    {
-      id: "javascript",
-      name: "JavaScript",
-      key: "J",
-      category: "Frontend",
-      description: "Bahasa scripting untuk memberikan interaktivitas dinamis pada antarmuka web dan penanganan event.",
-      projects: ["Sistem Administrasi Pembayaran SMK"],
-      evidence: "Manipulasi DOM dinamis, validasi input form interaktif, handling modal, dan filtering data secara asynchronous.",
-      bg: "#f59e0b",
-      darkBg: "#b45309",
-      glow: "rgba(245, 158, 11, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M13.8 16.5c.5.8 1.2 1.3 2.3 1.3 1.2 0 1.9-.6 1.9-1.6 0-1.1-.8-1.5-2-2.1-1.8-.7-2.9-1.6-2.9-3.5 0-2 1.5-3.4 3.7-3.4 1.6 0 2.8.6 3.6 2l-1.6 1c-.4-.7-.9-1-1.8-1-.8 0-1.4.5-1.4 1.2 0 .8.6 1.1 1.7 1.6 1.9.8 3.2 1.7 3.2 3.8 0 2.3-1.8 3.6-4.2 3.6-2.2 0-3.6-1.1-4.2-2.5l1.6-.4zm-6.8 1.4c.4.6.8 1 1.6 1 .9 0 1.4-.4 1.4-1.8V8.2h2.2v9c0 2.5-1.5 3.7-3.6 3.7-1.9 0-3-.9-3.6-2.1l2-.9z"/></svg>'
-    },
+
     {
       id: "html",
       name: "HTML5",
       key: "H",
-      category: "Frontend",
-      description: "Fondasi struktur halaman web semantik dengan fokus pada keterbacaan kode dan aksesibilitas.",
+      category: "Frontend Development",
+      description: "Markup semantik untuk struktur halaman web yang rapi, mudah diakses, dan SEO-friendly.",
       projects: ["Website IMM", "Sistem Administrasi Pembayaran SMK"],
-      evidence: "Penyusunan markup semantik, struktur formulir administrasi, dan tabel rekapitulasi data yang terstruktur rapi.",
-      bg: "#ea580c",
-      darkBg: "#9a3412",
-      glow: "rgba(234, 88, 12, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M3 2l1.8 17.5 7.2 2.5 7.2-2.5L21 2H3zm14.8 5.5H8.3l.3 3h9l-.6 6.3-5 1.7-5-1.7-.3-3.8h2.3l.2 2 2.8.9 2.8-.9.3-3.5H6.2L5.4 5h12.7l-.3 2.5z"/></svg>'
+      evidence: "Penyusunan struktur formulir administrasi, tabel rekapitulasi, dan halaman informasi organisasi dengan markup semantik.",
+      bg: "#E34F26",
+      darkBg: "#B7350F",
+      glow: "rgba(227, 79, 38, 0.6)",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M4 2l1.8 17.5 6.2 2.5 6.2-2.5L20 2H4zm13.8 5.5H8.3l.3 3h8.5l-.6 6.3-4.5 1.7-4.5-1.7-.3-3.8h2.3l.2 2 2.3.7 2.3-.7.3-3.5H7.2L6.4 5h11.7l-.3 2.5z"/></svg>'
     },
     {
       id: "css",
       name: "CSS3",
       key: "C",
-      category: "Frontend",
-      description: "Penataan tata letak visual dan estetika antarmuka web yang bersih, responsif, dan konsisten.",
+      category: "Frontend Development",
+      description: "Penataan tampilan antarmuka: custom layout, desain responsif, dan transisi/animasi halus.",
       projects: ["Sistem Administrasi Pembayaran SMK"],
-      evidence: "Kustomisasi styling komponen, layout responsif flexbox & grid, serta transisi interaksi yang mulus.",
-      bg: "#2563eb",
-      darkBg: "#1d4ed8",
-      glow: "rgba(37, 99, 235, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M3 2l1.8 17.5 7.2 2.5 7.2-2.5L21 2H3zm14.8 5.5H8.3l.3 3h9l-.6 6.3-5 1.7-5-1.7-.3-3.8h2.3l.2 2 2.8.9 2.8-.9.3-3.5H6.2L5.4 5h12.7l-.3 2.5z"/></svg>'
+      evidence: "Pembuatan layout responsif, styling komponen admin, dan micro-interaction pada antarmuka dashboard.",
+      bg: "#1572B6",
+      darkBg: "#0C4A75",
+      glow: "rgba(21, 114, 182, 0.6)",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M4 2l1.8 17.5 6.2 2.5 6.2-2.5L20 2H4zm13.8 5.5H8.3l.3 3h8.5l-.6 6.3-4.5 1.7-4.5-1.7-.3-3.8h2.3l.2 2 2.3.7 2.3-.7.3-3.5H7.2L6.4 5h11.7l-.3 2.5z"/></svg>'
+    },
+    {
+      id: "js",
+      name: "JavaScript",
+      key: "J",
+      category: "Frontend Development",
+      description: "Bahasa scripting untuk interaktivitas dinamis pada antarmuka web dan penanganan event pengguna.",
+      projects: ["Sistem Administrasi Pembayaran SMK"],
+      evidence: "Manipulasi DOM, validasi input form secara real-time, dan interaksi UI dinamis pada dashboard admin.",
+      bg: "#F0B900",
+      darkBg: "#946200",
+      glow: "rgba(240, 185, 0, 0.55)",
+      iconSvg: '<svg viewBox="0 0 24 24"><text x="12" y="16.5" font-family="sans-serif" font-weight="900" font-size="12" text-anchor="middle" fill="#111827">JS</text></svg>'
     },
     {
       id: "bootstrap",
       name: "Bootstrap",
       key: "B",
-      category: "Frontend",
-      description: "Framework CSS untuk mempercepat pembuatan antarmuka pengguna yang responsif dan mobile-friendly.",
+      category: "Frontend Development",
+      description: "Framework CSS berbasis komponen siap pakai untuk membangun antarmuka responsif secara cepat.",
       projects: ["Sistem Administrasi Pembayaran SMK"],
-      evidence: "Implementasi responsive grid system, komponen navigasi, modal dialog, cards, dan form control standar industri.",
-      bg: "#7c3aed",
-      darkBg: "#5b21b6",
-      glow: "rgba(124, 58, 237, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M7 6h5.8c1.9 0 3.2 1 3.2 2.5 0 1.1-.7 2-1.7 2.3 1.3.3 2.1 1.4 2.1 2.7 0 1.8-1.5 2.9-3.6 2.9H7V6zm2.5 4h3c.8 0 1.4-.4 1.4-1.2 0-.7-.5-1.1-1.4-1.1h-3V10zm0 4.5h3.3c.9 0 1.6-.4 1.6-1.3 0-.8-.7-1.3-1.6-1.3H9.5v2.6z"/></svg>'
+      evidence: "Penggunaan grid system, komponen modal, navbar, dan form styling responsif pada dashboard administrasi.",
+      bg: "#7952B3",
+      darkBg: "#4B2E83",
+      glow: "rgba(121, 82, 179, 0.6)",
+      iconSvg: '<svg viewBox="0 0 24 24"><text x="12" y="17.5" font-family="Georgia, serif" font-weight="700" font-size="16" text-anchor="middle" fill="#ffffff">B</text></svg>'
     },
     {
       id: "blade",
-      name: "Blade",
-      key: "D",
-      category: "Template",
-      description: "Templating engine bawaan Laravel untuk memisahkan logika tampilan dengan kode modular dan reusable.",
+      name: "Blade Engine",
+      key: "T",
+      category: "Frontend Development",
+      description: "Templating engine bawaan Laravel untuk memisahkan logika tampilan dengan struktur kode modular.",
       projects: ["Sistem Administrasi Pembayaran SMK"],
-      evidence: "Pemanfaatan layout inheritance (`@extends`, `@section`), komponen reusable, dan conditional directive dinamis.",
-      bg: "#f43f5e",
-      darkBg: "#be123c",
-      glow: "rgba(244, 63, 94, 0.55)",
+      evidence: "Penerapan layout inheritance (@extends, @section), komponen reusable, dan conditional directive dinamis.",
+      bg: "#be123c",
+      darkBg: "#7f1d1d",
+      glow: "rgba(190, 18, 60, 0.6)",
       iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>'
     },
     {
-      id: "git",
-      name: "Git",
-      key: "G",
-      category: "Tools",
-      description: "Distributed Version Control System untuk mencatat perubahan kode dan mengelola riwayat pengembangan.",
-      projects: ["GitHub Repositories"],
-      evidence: "Penerapan branching, commit tracking, manajemen versi kode, dan sinkronisasi repositori di GitHub.",
+      id: "php",
+      name: "PHP",
+      key: "P",
+      category: "Backend Development",
+      description: "Bahasa pemrograman server-side untuk logika aplikasi, session handling, dan operasi CRUD.",
+      projects: ["Pulpen App", "Sistem Administrasi Pembayaran SMK", "Website ATK"],
+      evidence: "Penerapan clean code OOP, pengelolaan sesi, dan koneksi database pada beberapa aplikasi web.",
+      bg: "#777BB3",
+      darkBg: "#4B4F7A",
+      glow: "rgba(119, 123, 179, 0.6)",
+      iconSvg: '<svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="11" ry="7" fill="none" stroke="#ffffff" stroke-width="1.6"/><text x="12" y="15" font-family="sans-serif" font-weight="800" font-size="7.5" text-anchor="middle" fill="#ffffff">php</text></svg>'
+    },
+    {
+      id: "laravel",
+      name: "Laravel",
+      key: "L",
+      category: "Backend Development",
+      description: "Framework MVC PHP untuk arsitektur aplikasi web modern, terstruktur, aman, dan modular.",
+      projects: ["Sistem Administrasi Pembayaran SMK"],
+      evidence: "Implementasi MVC, Eloquent ORM, middleware otentikasi, dan routing terstruktur pada 15+ modul pembayaran sekolah.",
+      bg: "#ef4444",
+      darkBg: "#b91c1c",
+      glow: "rgba(239, 68, 68, 0.6)",
+      iconSvg: '<svg viewBox="0 0 24 24"><text x="12" y="17.5" font-family="Georgia, serif" font-weight="700" font-size="16" text-anchor="middle" fill="#ffffff">L</text></svg>'
+    },
+    {
+      id: "restapi",
+      name: "REST API",
+      key: "A",
+      category: "Backend Development",
+      description: "Spesifikasi antarmuka komunikasi data HTTP untuk operasi CRUD berbasis method dan response JSON.",
+      projects: ["Pulpen App"],
+      evidence: "Perancangan endpoint JSON untuk integrasi aplikasi mobile/Android pada sistem manajemen stok alat tulis.",
       bg: "#334155",
       darkBg: "#0f172a",
-      glow: "rgba(148, 163, 184, 0.55)",
+      glow: "rgba(148, 163, 184, 0.5)",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h13M17 7l-3-3M17 7l-3 3"/><path d="M20 17H7M7 17l3-3M7 17l3 3"/></svg>'
+    },
+    {
+      id: "mysql",
+      name: "MySQL",
+      key: "M",
+      category: "Database Management",
+      description: "Relational Database Management System untuk pengorganisasian data terstruktur berperforma tinggi.",
+      projects: ["Sistem Administrasi Pembayaran SMK", "Pulpen App"],
+      evidence: "Perancangan skema relasional 15+ tabel dengan foreign keys, indexing, dan transaksi keuangan yang konsisten.",
+      bg: "#0284c7",
+      darkBg: "#075985",
+      glow: "rgba(2, 132, 199, 0.6)",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M12 3c-4.4 0-8 1.3-8 3s3.6 3 8 3 8-1.3 8-3-3.6-3-8-3zm0 4.5c-3.6 0-6.5-1-6.5-1.5S8.4 4.5 12 4.5s6.5 1 6.5 1.5-2.9 1.5-6.5 1.5zM4 8v3.5c0 1.7 3.6 3 8 3s8-1.3 8-3V8c-1.8 1.3-4.7 2-8 2s-6.2-.7-8-2zm0 5.5V17c0 1.7 3.6 3 8 3s8-1.3 8-3v-3.5c-1.8 1.3-4.7 2-8 2s-6.2-.7-8-2z"/></svg>'
+    },
+    {
+      id: "sql",
+      name: "SQL",
+      key: "Q",
+      category: "Database Management",
+      description: "Bahasa query untuk operasi data: seleksi, join, agregasi, dan menjaga integritas data.",
+      projects: ["Sistem Administrasi Pembayaran SMK"],
+      evidence: "Penulisan query untuk laporan keuangan, join antar tabel, dan agregasi data pembayaran sekolah.",
+      bg: "#4338CA",
+      darkBg: "#312E81",
+      glow: "rgba(67, 56, 202, 0.6)",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="13" height="16" rx="1.5"/><path d="M6 8h7M6 12h7M6 16h4"/><circle cx="18" cy="17" r="3.2"/><path d="M20.5 19.5L23 22"/></svg>'
+    },
+    {
+      id: "phpmyadmin",
+      name: "phpMyAdmin",
+      key: "Y",
+      category: "Database Management",
+      description: "Perangkat lunak berbasis web untuk administrasi dan inspeksi skema database MySQL/MariaDB.",
+      projects: ["Sistem Administrasi Pembayaran SMK"],
+      evidence: "Manajemen relasi foreign key, export/import dump SQL, pemantauan indeks, dan eksekusi query interaktif.",
+      bg: "#1f2937",
+      darkBg: "#111827",
+      glow: "rgba(255, 255, 255, 0.35)",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M4 6h16l-10 12h10" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>'
+    },
+    {
+      id: "vscode",
+      name: "VS Code",
+      key: "V",
+      category: "Tools & Code Editor",
+      description: "IDE utama dengan kustomisasi ekstensi, live debugger, Git visualizer, dan terminal terpadu.",
+      projects: ["Development Workflow"],
+      evidence: "Pengelolaan workflow multi-proyek, snippet efisiensi, integrasi linter, dan remote development.",
+      bg: "#0078D4",
+      darkBg: "#005A9E",
+      glow: "rgba(0, 120, 212, 0.6)",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M17.5 2.5L7.5 11l-4-3.5L2 8.5v7l1.5 1 4-3.5 10 8.5 4.5-2V4.5l-4.5-2zm0 4.5v10l-6.5-5 6.5-5z"/></svg>'
+    },
+    {
+      id: "sheets",
+      name: "Google Sheets",
+      key: "S",
+      category: "Data Management",
+      description: "Kolaborasi data berbasis cloud dengan validasi input dan pencatatan record secara real-time.",
+      projects: ["Data Management"],
+      evidence: "Pencatatan data secara kolaboratif, validasi input, dan sinkronisasi record antar tim secara online.",
+      bg: "#34A853",
+      darkBg: "#1E7E34",
+      glow: "rgba(52, 168, 83, 0.6)",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/><path d="M17 17l1.5 1.5L21 15.5" stroke-width="2.2"/></svg>'
+    },
+    {
+      id: "dataentry",
+      name: "Data Entry & Validation",
+      key: "N",
+      category: "Data Management",
+      description: "Verifikasi, pengecekan konsistensi, dan penghapusan duplikasi pada data administrasi.",
+      projects: ["Administrasi Sekolah & Organisasi"],
+      evidence: "Validasi dan pembersihan data selama magang di OEMAH DIGITAL serta pengelolaan administrasi organisasi.",
+      bg: "#475569",
+      darkBg: "#1e293b",
+      glow: "rgba(148, 163, 184, 0.5)",
+      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6a1 1 0 011 1v1H8V4a1 1 0 011-1z"/><path d="M8.5 13l2 2 4-4"/></svg>'
+    },
+    {
+      id: "git",
+      name: "Git VCS",
+      key: "I",
+      category: "Tools & Version Control",
+      description: "Distributed Version Control System untuk mencatat riwayat perubahan dan integrasi kode cabang.",
+      projects: ["GitHub Repositories"],
+      evidence: "Branching workflow, commit history tracking, conflict resolution, dan sinkronisasi repositori.",
+      bg: "#ef4444",
+      darkBg: "#991b1b",
+      glow: "rgba(239, 68, 68, 0.6)",
       iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M21.6 10.9L13.1 2.4c-.6-.6-1.5-.6-2.1 0L8.7 4.7l2.7 2.7c.6-.2 1.3-.1 1.8.4.5.5.6 1.2.4 1.8l2.6 2.6c.6-.2 1.3-.1 1.8.4.8.8.8 2 0 2.8s-2 .8-2.8 0c-.6-.6-.7-1.4-.4-2.1l-2.4-2.4v5.3c.2.2.3.5.3.8 0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5c0-.4.2-.8.5-1.1V9.4c-.3-.3-.5-.7-.5-1.1 0-.4.2-.8.4-1.1L7.7 4.6 2.4 9.9c-.6.6-.6 1.5 0 2.1l8.5 8.5c.6.6 1.5.6 2.1 0l8.6-8.6c.6-.6.6-1.5 0-2.1z"/></svg>'
     },
     {
       id: "github",
       name: "GitHub",
-      key: "T",
-      category: "Tools",
+      key: "G",
+      category: "Tools & Version Control",
       description: "Platform kolaborasi kode, hosting repositori, issue tracking, dan code review open-source.",
       projects: ["github.com/Narendrarizqi"],
       evidence: "Hosting repositori portfolio, pengelolaan README dokumentasi, serta integrasi repositori aktif.",
       bg: "#18181b",
       darkBg: "#09090b",
       glow: "rgba(255, 255, 255, 0.35)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>'
-    },
-    {
-      id: "rest-api",
-      name: "REST API",
-      key: "R",
-      category: "Backend",
-      description: "Arsitektur antarmuka komunikasi data terstandarisasi berbasis HTTP methods dan payload JSON.",
-      projects: ["Pulpen App"],
-      evidence: "Perancangan RESTful API untuk operasi CRUD data alat tulis kantor dengan respons JSON yang terstandarisasi.",
-      bg: "#06b6d4",
-      darkBg: "#0e7490",
-      glow: "rgba(6, 182, 212, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><circle cx="7" cy="7" r="1" fill="#ffffff"/><circle cx="7" cy="17" r="1" fill="#ffffff"/><path d="M12 10v4"/></svg>'
-    },
-    {
-      id: "sql",
-      name: "SQL",
-      key: "Q",
-      category: "Database",
-      description: "Structured Query Language untuk manipulasi data, aggregasi, join relasional, dan transaksi ACID.",
-      projects: ["Sistem Administrasi Pembayaran SMK"],
-      evidence: "Penyusunan query kompleks, filtering bertingkat, grouping rekapitulasi keuangan, dan optimasi indeks tabel.",
-      bg: "#0284c7",
-      darkBg: "#075985",
-      glow: "rgba(2, 132, 199, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M12 2C6.5 2 2 3.8 2 6v12c0 2.2 4.5 4 10 4s10-1.8 10-4V6c0-2.2-4.5-4-10-4zm0 2c4.4 0 8 1.3 8 2s-3.6 2-8 2-8-1.3-8-2 3.6-2 8-2zm0 6c4.4 0 8-1.3 8-2v3.5c0 .7-3.6 2-8 2s-8-1.3-8-2V10c0 .7 3.6 2 8 2zm0 6c4.4 0 8-1.3 8-2v3.5c0 .7-3.6 2-8 2s-8-1.3-8-2V16c0 .7 3.6 2 8 2z"/></svg>'
-    },
-    {
-      id: "excel",
-      name: "Microsoft Excel",
-      key: "E",
-      category: "Data",
-      description: "Aplikasi spreadsheet untuk pengorganisasian, kalkulasi, pembersihan, dan analisis data kuantitatif.",
-      projects: ["Data Management & Administrasi"],
-      evidence: "Pengolahan data tabular, pemanfaatan formula kalkulasi, rekapitulasi data siswa, dan verifikasi entri.",
-      bg: "#059669",
-      darkBg: "#064e3b",
-      glow: "rgba(5, 150, 105, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M8.5 7.5L11 12l-2.6 4.5h2.2l1.5-3 1.5 3h2.2L13 12l2.6-4.5h-2.1l-1.5 3-1.5-3H8.5z"/><rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="#ffffff" stroke-width="2"/></svg>'
-    },
-    {
-      id: "sheets",
-      name: "Google Sheets",
-      key: "S",
-      category: "Data",
-      description: "Spreadsheet berbasis cloud untuk kolaborasi pencatatan, validasi, dan manajemen data terpusat.",
-      projects: ["Data Management"],
-      evidence: "Kolaborasi pengelolaan data daring, validasi data masukan, serta pembuatan template laporan terstruktur.",
-      bg: "#16a34a",
-      darkBg: "#14532d",
-      glow: "rgba(22, 163, 74, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><rect x="4" y="3" width="16" height="18" rx="2.5" fill="none" stroke="#ffffff" stroke-width="2"/><path d="M8 8h8v2H8V8zm0 3h8v2H8v-2zm0 3h5v2H8v-2z"/></svg>'
-    },
-    {
-      id: "phpmyadmin",
-      name: "phpMyAdmin",
-      key: "A",
-      category: "Database",
-      description: "Perangkat lunak berbasis web untuk administrasi dan inspeksi skema database MySQL/MariaDB.",
-      projects: ["Sistem Administrasi Pembayaran SMK"],
-      evidence: "Manajemen relasi foreign key, export/import dump SQL, pemantauan indeks, dan eksekusi query interaktif.",
-      bg: "#d97706",
-      darkBg: "#78350f",
-      glow: "rgba(217, 119, 6, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M3 13h18c-.8 4-4 7-9 7s-8.2-3-9-7zm9-9c1.5 0 2.5 1 3 3l-6 3c.5-3 2-6 3-6z"/></svg>'
-    },
-    {
-      id: "vscode",
-      name: "VS Code",
-      key: "V",
-      category: "Tools",
-      description: "Code editor utama dengan integrasi extension ecosystem, linter, terminal, dan debugger terpadu.",
-      projects: ["Development Environment"],
-      evidence: "Konfigurasi workspace pengembangan web (PHP, Laravel, JS), git integration, dan snippet produktivitas.",
-      bg: "#0284c7",
-      darkBg: "#075985",
-      glow: "rgba(2, 132, 199, 0.55)",
-      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M17.5 2.5L7.5 11l-4-3.5L2 8.5v7l1.5 1 4-3.5 10 8.5 4.5-2V4.5l-4.5-2zm0 4.5v10l-6.5-5 6.5-5z"/></svg>'
+      iconSvg: '<svg viewBox="0 0 24 24" fill="#ffffff"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"/></svg>'
     }
   ],
 
-  // Skills — verified from GitHub repos and CV (for Detailed Grid Mode)
   skills: {
     frontend: {
       title: "Frontend Development",
@@ -403,7 +394,6 @@ const PORTFOLIO_DATA = {
     data: {
       title: "Data Management & Analytics",
       items: [
-        { name: "Microsoft Excel", projectEvidence: "Data Management & Administrasi", description: "Data entry, formulas, tabular analysis, reports" },
         { name: "Google Sheets", projectEvidence: "Data Management", description: "Cloud collaboration, validation rules, record keeping" },
         { name: "Data Entry & Validation", projectEvidence: "Administrasi Sekolah & Organisasi", description: "Verification, consistency check, duplicate removal" }
       ]
@@ -418,7 +408,6 @@ const PORTFOLIO_DATA = {
     }
   },
 
-  // Experience — from CV
   experience: [
     {
       position: "Freelance Programmer",
@@ -436,7 +425,6 @@ const PORTFOLIO_DATA = {
     }
   ],
 
-  // Organization — from CV
   organizations: [
     {
       name: "IMM (Ikatan Mahasiswa Muhammadiyah)",
@@ -459,7 +447,6 @@ const PORTFOLIO_DATA = {
     }
   ],
 
-  // Education — from CV
   education: [
     {
       institution: "Universitas Muhammadiyah Purwokerto",
@@ -475,7 +462,6 @@ const PORTFOLIO_DATA = {
     }
   ],
 
-  // Certificates — placeholder structure, to be filled from LinkedIn
-  // DO NOT create fake certificates
   certificates: []
 };
+

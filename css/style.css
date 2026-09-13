@@ -1,11 +1,5 @@
-/* ====================================================
-   Portfolio — Bagus Narendra Rizqi Ananto
-   Design: Clean + Modern + Professional + Interactive
-   ==================================================== */
-
-/* ============= CSS Custom Properties ============= */
 :root {
-  /* Colors — Dark Theme */
+
   --bg-primary: #0b0d17;
   --bg-secondary: #111322;
   --bg-card: #161830;
@@ -25,11 +19,9 @@
   --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
   --overlay: rgba(0, 0, 0, 0.7);
 
-  /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -40,22 +32,18 @@
   --space-4xl: 6rem;
   --space-5xl: 8rem;
 
-  /* Layout */
   --max-width: 1140px;
   --nav-height: 64px;
 
-  /* Transitions */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 0.3s;
 
-  /* Border Radius */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
   --radius-xl: 20px;
 }
 
-/* Light Theme */
 [data-theme="light"] {
   --bg-primary: #f8f9fc;
   --bg-secondary: #ffffff;
@@ -77,7 +65,6 @@
   --overlay: rgba(0, 0, 0, 0.5);
 }
 
-/* ============= Reset & Base ============= */
 *,
 *::before,
 *::after {
@@ -124,7 +111,6 @@ a:hover {
   outline-offset: 3px;
 }
 
-/* ============= Skip Link ============= */
 .skip-link {
   position: fixed;
   top: -100%;
@@ -143,7 +129,6 @@ a:hover {
   top: var(--space-md);
 }
 
-/* ============= Container ============= */
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -151,7 +136,6 @@ a:hover {
   padding: 0 var(--space-xl);
 }
 
-/* ============= Navigation ============= */
 .nav-header {
   position: fixed;
   top: 0;
@@ -214,7 +198,6 @@ a:hover {
   color: var(--accent);
 }
 
-/* Theme Toggle */
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -240,7 +223,6 @@ a:hover {
 [data-theme="light"] .icon-sun { display: none; }
 [data-theme="light"] .icon-moon { display: block; }
 
-/* Hamburger */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -275,7 +257,6 @@ a:hover {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* ============= Hero ============= */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -378,7 +359,6 @@ a:hover {
   transform: translateY(-2px);
 }
 
-/* Hero Avatar */
 .hero-visual {
   display: flex;
   justify-content: center;
@@ -411,7 +391,6 @@ a:hover {
   z-index: 0;
 }
 
-/* Scroll Indicator */
 .hero-scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -431,7 +410,6 @@ a:hover {
   50% { opacity: 1; transform: scaleY(1); }
 }
 
-/* ============= Buttons ============= */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -479,7 +457,6 @@ a:hover {
   font-size: 0.8125rem;
 }
 
-/* ============= Sections ============= */
 .section {
   padding: var(--space-5xl) 0;
 }
@@ -517,7 +494,6 @@ a:hover {
   margin-left: var(--space-md);
 }
 
-/* ============= About ============= */
 .about-content {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -536,7 +512,6 @@ a:hover {
   font-weight: 600;
 }
 
-/* Journey Timeline */
 .journey-title {
   font-size: 1.125rem;
   font-weight: 600;
@@ -607,7 +582,6 @@ a:hover {
   font-weight: 600;
 }
 
-/* ============= Capabilities / What I Do ============= */
 .capabilities-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -653,7 +627,6 @@ a:hover {
   line-height: 1.7;
 }
 
-/* ============= Project Filter ============= */
 .project-filter {
   display: flex;
   gap: var(--space-sm);
@@ -685,7 +658,6 @@ a:hover {
   color: #fff;
 }
 
-/* ============= Featured Project ============= */
 .featured-project {
   margin-bottom: var(--space-3xl);
 }
@@ -807,7 +779,6 @@ a:hover {
   flex-wrap: wrap;
 }
 
-/* ============= Project Grid ============= */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -913,13 +884,11 @@ a:hover {
   padding: 0.125rem 0.5rem;
 }
 
-/* Project card hidden by filter */
 .project-card.hidden,
 .featured-project.hidden {
   display: none;
 }
 
-/* ============= Background Starfield Canvas ============= */
 .starfield-canvas {
   position: fixed;
   top: 0;
@@ -935,7 +904,6 @@ a:hover {
   opacity: 0.2;
 }
 
-/* ============= Skills Section ============= */
 .skills-mode-switch {
   display: flex;
   justify-content: center;
@@ -972,15 +940,13 @@ a:hover {
   box-shadow: 0 0 15px var(--accent-subtle);
 }
 
-/* --- Mode 1: Interactive 3D Macropad Showcase --- */
 .skills-macropad-view {
   display: grid;
   grid-template-columns: 1.05fr 1.15fr;
   gap: var(--space-2xl);
-  align-items: start; /* FIXED: 'start' prevents the right column from moving when left column changes */
+  align-items: start;
 }
 
-/* Left Column: Skill HUD */
 .skills-hud-col {
   display: flex;
   flex-direction: column;
@@ -1021,7 +987,7 @@ a:hover {
   backdrop-filter: blur(8px);
   position: relative;
   overflow: hidden;
-  height: 380px; /* FIXED & EQUAL SIZE FOR ALL SKILLS */
+  height: 380px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -1096,7 +1062,7 @@ a:hover {
   font-size: 0.875rem;
   color: var(--text-secondary);
   line-height: 1.5;
-  height: 2.65rem; /* exactly 2 lines */
+  height: 2.65rem;
   margin-bottom: 0.75rem;
   overflow: hidden;
   display: -webkit-box;
@@ -1110,7 +1076,7 @@ a:hover {
   border: 1px solid var(--accent-border);
   border-radius: var(--radius-md);
   padding: 0.875rem 1rem;
-  height: 172px; /* FIXED & EQUAL SIZE FOR ALL SKILLS */
+  height: 172px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -1134,7 +1100,7 @@ a:hover {
   font-size: 0.8125rem;
   color: var(--text-primary);
   line-height: 1.45;
-  height: 3.6rem; /* exactly 3 lines */
+  height: 3.6rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -1200,7 +1166,6 @@ a:hover {
   50% { opacity: 0.4; transform: scale(0.8); }
 }
 
-/* Right Column: 3D Stage & Bongo Cat */
 .skills-stage-col {
   display: flex;
   flex-direction: column;
@@ -1237,51 +1202,45 @@ a:hover {
 }
 
 .macropad-stage {
-  perspective: 1200px;
-  transform-style: preserve-3d;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 0 20px 0;
+  padding: 20px 10px;
   width: 100%;
 }
 
-/* 3D Macropad Chassis (Custom Mechanical Keyboard matching reference) */
 .macropad-chassis {
   position: relative;
-  transform: rotateX(46deg) rotateY(-8deg) rotateZ(16deg);
-  transform-style: preserve-3d;
-  background: #0d1117;
+  transform: none;
+  background: #090b10;
   border: 2px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 24px 18px 20px 18px;
-  box-shadow: 
-    -18px 28px 45px -8px rgba(0, 0, 0, 0.85),
-    -7px 12px 0px #06080c,
-    inset 0 1px 2px rgba(255, 255, 255, 0.15),
-    inset 0 -2px 6px rgba(0, 0, 0, 0.7);
-  transition: transform 0.4s var(--ease);
+  border-radius: 26px;
+  padding: 24px 22px 22px 22px;
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.85),
+    0 6px 0px #040507,
+    inset 0 1px 2px rgba(255, 255, 255, 0.18),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.85);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
 [data-theme="light"] .macropad-chassis {
   background: #cbd5e1;
   border-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 
-    -15px 22px 35px -8px rgba(0, 0, 0, 0.25),
-    -6px 10px 0px #94a3b8,
+  box-shadow:
+    0 16px 30px -8px rgba(0, 0, 0, 0.22),
+    0 5px 0px #94a3b8,
     inset 0 1px 1px rgba(255, 255, 255, 0.9),
     inset 0 -2px 5px rgba(0, 0, 0, 0.15);
 }
 
-/* 3D Embossed SKILLS Header on the Chassis */
 .macropad-header-3d {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
-  transform: translateZ(10px);
   user-select: none;
   pointer-events: none;
 }
@@ -1290,14 +1249,15 @@ a:hover {
   font-family: var(--font-heading, var(--font-sans));
   font-size: 1.6rem;
   font-weight: 900;
-  letter-spacing: 0.2em;
-  color: #f1f5f9;
+  letter-spacing: 0.22em;
+  color: #ffffff;
   text-transform: uppercase;
-  text-shadow: 
+  text-shadow:
     0 1px 0 #94a3b8,
     0 2px 0 #64748b,
     0 3px 0 #334155,
-    0 4px 8px rgba(0, 0, 0, 0.65);
+    0 4px 0 #1e293b,
+    0 6px 12px rgba(0, 0, 0, 0.8);
   line-height: 1;
 }
 
@@ -1305,14 +1265,14 @@ a:hover {
   font-size: 0.65rem;
   font-weight: 500;
   color: #94a3b8;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   margin-top: 4px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 [data-theme="light"] .macropad-title-3d {
   color: #1e293b;
-  text-shadow: 
+  text-shadow:
     0 1px 0 #ffffff,
     0 2px 0 #94a3b8,
     0 3px 4px rgba(0, 0, 0, 0.2);
@@ -1326,38 +1286,36 @@ a:hover {
 .chassis-surface {
   position: relative;
   z-index: 10;
-  transform: translateZ(14px);
-  transform-style: preserve-3d;
 }
 
-/* 4x4 Keycaps Grid */
 .keys-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  transform-style: preserve-3d;
+  gap: 12px;
 }
 
-/* Individual Solid-Colored 3D Keycap */
 .keycap {
   position: relative;
-  width: 62px;
-  height: 58px;
-  background: var(--key-bg, #2563eb);
-  border: none;
-  border-radius: 11px;
+  width: 60px;
+  height: 56px;
+  background: linear-gradient(175deg, rgba(255, 255, 255, 0.24) 0%, rgba(0, 0, 0, 0.08) 100%), var(--key-bg, #2563eb);
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+  border-radius: 12px;
   padding: 0;
   cursor: pointer;
   outline: none;
   font-family: var(--font-sans);
-  box-shadow: 
-    0 6px 0 var(--key-dark, #1d4ed8),
-    0 10px 16px rgba(0, 0, 0, 0.55),
-    inset 0 1px 1px rgba(255, 255, 255, 0.45),
+
+  box-shadow:
+    0 4px 0 var(--key-dark, #1d4ed8),
+    0 8px 14px -2px rgba(0, 0, 0, 0.65),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5),
     inset 0 -2px 3px rgba(0, 0, 0, 0.25);
-  transform: translateZ(8px);
-  transform-style: preserve-3d;
-  transition: transform 0.12s cubic-bezier(0.2, 0, 0.1, 1), box-shadow 0.12s ease, filter 0.15s ease;
+  transform: translateY(0);
+  transition: transform 0.09s cubic-bezier(0.2, 0, 0.1, 1), box-shadow 0.09s cubic-bezier(0.2, 0, 0.1, 1), filter 0.12s ease;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -1367,7 +1325,6 @@ a:hover {
   justify-content: center;
 }
 
-/* Generous hit target expansion so even edge touches trigger easily */
 .keycap::before {
   content: '';
   position: absolute;
@@ -1377,12 +1334,14 @@ a:hover {
 }
 
 .keycap:hover {
+  transform: translateY(2px);
+  box-shadow:
+    0 2px 0 var(--key-dark, #1d4ed8),
+    0 4px 10px rgba(0, 0, 0, 0.6),
+    0 0 20px var(--key-glow, rgba(255, 255, 255, 0.45)),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.3);
   filter: brightness(1.12);
-  box-shadow: 
-    0 6px 0 var(--key-dark, #1d4ed8),
-    0 0 18px var(--key-glow, rgba(255, 255, 255, 0.4)),
-    0 12px 22px rgba(0, 0, 0, 0.65),
-    inset 0 1px 1px rgba(255, 255, 255, 0.55);
 }
 
 .keycap:focus-visible {
@@ -1390,22 +1349,32 @@ a:hover {
   outline-offset: 2px;
 }
 
-/* Keycap Active / Selected State - perfectly uniform size and position with glow */
 .keycap.active-selected {
-  filter: brightness(1.18);
-  box-shadow: 
-    0 6px 0 var(--key-dark, #1d4ed8),
-    0 0 22px var(--key-glow, rgba(255, 255, 255, 0.55)),
-    0 12px 22px rgba(0, 0, 0, 0.7),
-    inset 0 1px 1px rgba(255, 255, 255, 0.65);
+  transform: translateY(2px);
+  box-shadow:
+    0 2px 0 var(--key-dark, #1d4ed8),
+    0 4px 12px rgba(0, 0, 0, 0.65),
+    0 0 24px var(--key-glow, rgba(255, 255, 255, 0.6)),
+    inset 0 1px 2px rgba(255, 255, 255, 0.65),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.16);
 }
 
-/* Physical click state (mouse down only) */
-.keycap:active {
-  transform: translateZ(2px);
-  box-shadow: 
+.keycap.active-selected:hover {
+  transform: translateY(2px);
+  box-shadow:
     0 2px 0 var(--key-dark, #1d4ed8),
-    0 4px 8px rgba(0, 0, 0, 0.45),
+    0 4px 12px rgba(0, 0, 0, 0.65),
+    0 0 24px var(--key-glow, rgba(255, 255, 255, 0.6)),
+    inset 0 1px 2px rgba(255, 255, 255, 0.65),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+}
+
+.keycap:active {
+  transform: translateY(4px);
+  box-shadow:
+    0 0 0 var(--key-dark, #1d4ed8),
+    0 2px 4px rgba(0, 0, 0, 0.4),
     inset 0 2px 4px rgba(0, 0, 0, 0.4);
   filter: brightness(0.95);
 }
@@ -1434,91 +1403,149 @@ a:hover {
   flex-shrink: 0;
 }
 
-/* Pure white centered vector icons */
 .keycap-icon svg {
   width: 26px;
   height: 26px;
   display: block;
-  fill: #ffffff;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.65));
   transform: none !important;
 }
 
 .keycap.active-selected .keycap-icon svg {
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.85));
 }
 
-/* --- Mode 2: Detailed Grid View --- */
 .skills-grid-view {
   width: 100%;
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--space-xl);
+  align-items: stretch;
 }
 
 .skill-group {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-2xl);
-  transition: all var(--duration) var(--ease);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 1.5rem;
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease), transform var(--duration) var(--ease);
+  display: flex;
+  flex-direction: column;
 }
 
 .skill-group:hover {
   border-color: var(--accent-border);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.skill-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-group-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 .skill-group-title {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--accent);
+  font-family: var(--font-heading, var(--font-sans));
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: var(--space-lg);
-  font-weight: 500;
+}
+
+.skill-items-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .skill-item {
-  padding: var(--space-sm) 0;
+  padding: 0.875rem 0;
   border-bottom: 1px solid var(--border);
+  transition: background var(--duration) var(--ease);
+}
+
+.skill-item:first-child {
+  padding-top: 0.25rem;
 }
 
 .skill-item:last-child {
   border-bottom: none;
+  padding-bottom: 0.25rem;
 }
 
-.skill-item-header {
+.skill-item-top {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .skill-name {
-  font-size: 0.9375rem;
+  font-size: 0.95rem;
   color: var(--text-primary);
   font-weight: 600;
-}
-
-.skill-evidence {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--accent);
-  background: var(--accent-subtle);
-  padding: 0.125rem 0.375rem;
-  border-radius: 4px;
+  letter-spacing: 0.01em;
+  margin: 0;
 }
 
 .skill-item-desc {
   font-size: 0.8125rem;
   color: var(--text-muted);
-  line-height: 1.4;
+  line-height: 1.5;
+  margin: 0 0 0.5rem 0;
 }
 
-/* ============= Experience Timeline ============= */
+.skill-evidence-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.35rem;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  line-height: 1.25;
+}
+
+.skill-chip svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+[data-theme="light"] .skill-chip {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.22);
+}
+
 .experience-timeline {
   position: relative;
   max-width: 700px;
@@ -1587,7 +1614,6 @@ a:hover {
   line-height: 1.7;
 }
 
-/* ============= Organization ============= */
 .organization-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1635,7 +1661,6 @@ a:hover {
   color: var(--text-muted);
 }
 
-/* ============= Education ============= */
 .education-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1691,7 +1716,6 @@ a:hover {
   color: var(--text-secondary);
 }
 
-/* ============= Contact ============= */
 .contact-content {
   text-align: center;
   max-width: 640px;
@@ -1752,7 +1776,6 @@ a:hover {
   opacity: 0.8;
 }
 
-/* ============= Footer ============= */
 .footer {
   padding: var(--space-2xl) 0;
   border-top: 1px solid var(--border);
@@ -1764,7 +1787,6 @@ a:hover {
   color: var(--text-muted);
 }
 
-/* ============= Modal ============= */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1967,7 +1989,6 @@ a:hover {
   flex-wrap: wrap;
 }
 
-/* ============= Lightbox ============= */
 .lightbox-overlay {
   position: fixed;
   inset: 0;
@@ -2060,7 +2081,6 @@ a:hover {
   color: rgba(255,255,255,0.7);
 }
 
-/* ============= Reveal Animation ============= */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -2072,7 +2092,6 @@ a:hover {
   transform: translateY(0);
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2092,9 +2111,6 @@ a:hover {
   }
 }
 
-/* ============= Responsive ============= */
-
-/* Tablet */
 @media (max-width: 1024px) {
   .hero-content {
     grid-template-columns: 1fr;
@@ -2162,7 +2178,6 @@ a:hover {
   }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .container {
     padding: 0 var(--space-lg);
@@ -2246,7 +2261,6 @@ a:hover {
   .lightbox-next { right: var(--space-sm); }
 }
 
-/* Small mobile */
 @media (max-width: 480px) {
   .hero-avatar-wrapper {
     width: 180px;
@@ -2276,44 +2290,52 @@ a:hover {
   }
 
   .macropad-chassis {
-    padding: 16px 10px 14px 10px;
-    transform: rotateX(24deg) rotateY(-4deg) rotateZ(8deg);
+    padding: 18px 14px 16px 14px;
+    transform: none;
   }
 
   .macropad-header-3d {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .macropad-title-3d {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .keys-grid {
-    gap: 6px;
+    gap: 8px;
   }
 
   .keycap {
-    width: 48px;
-    height: 44px;
-    border-radius: 8px;
-    box-shadow: 
-      0 4px 0 var(--key-dark, #1d4ed8),
-      0 6px 10px rgba(0, 0, 0, 0.45),
+    width: 50px;
+    height: 46px;
+    border-radius: 9px;
+    box-shadow:
+      0 3px 0 var(--key-dark, #1d4ed8),
+      0 6px 10px rgba(0, 0, 0, 0.65),
       inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    transform: translateY(0);
+  }
+
+  .keycap:hover {
+    transform: translateY(1px);
+    box-shadow:
+      0 2px 0 var(--key-dark, #1d4ed8),
+      0 4px 8px rgba(0, 0, 0, 0.55),
+      0 0 14px var(--key-glow);
   }
 
   .keycap-icon {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
   }
 
   .keycap-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 }
 
-/* Tablet (max-width: 900px) Macropad adjustments */
 @media (max-width: 900px) {
   .skills-macropad-view {
     grid-template-columns: 1fr;
@@ -2325,11 +2347,10 @@ a:hover {
   }
 
   .macropad-chassis {
-    transform: rotateX(28deg) rotateY(-6deg) rotateZ(10deg);
+    transform: none;
   }
 }
 
-/* Accessibility: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .starfield-canvas {
     display: none !important;
@@ -2343,3 +2364,4 @@ a:hover {
     animation: none !important;
   }
 }
+

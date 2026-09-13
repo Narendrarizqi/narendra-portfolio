@@ -1,19 +1,11 @@
-/**
- * Portfolio JavaScript — Bagus Narendra Rizqi Ananto
- * Handles: theme toggle, navigation, scroll animations,
- * project rendering, filtering, modal, lightbox
- */
-
 (function () {
   'use strict';
 
-  // ======================== THEME TOGGLE ========================
   const ThemeManager = {
     init() {
       const toggle = document.getElementById('theme-toggle');
       const saved = localStorage.getItem('portfolio-theme');
-      const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      const theme = saved || preferred;
+      const theme = saved || 'dark';
 
       document.documentElement.setAttribute('data-theme', theme);
 
@@ -26,7 +18,6 @@
     }
   };
 
-  // ======================== NAVIGATION ========================
   const Navigation = {
     init() {
       const toggle = document.getElementById('nav-toggle');
@@ -35,14 +26,12 @@
       const header = document.getElementById('nav-header');
       const sections = document.querySelectorAll('.section, .hero');
 
-      // Hamburger toggle
       toggle.addEventListener('click', () => {
         const expanded = toggle.getAttribute('aria-expanded') === 'true';
         toggle.setAttribute('aria-expanded', !expanded);
         menu.classList.toggle('active');
       });
 
-      // Close menu on link click
       links.forEach(link => {
         link.addEventListener('click', () => {
           toggle.setAttribute('aria-expanded', 'false');
@@ -50,7 +39,6 @@
         });
       });
 
-      // Close menu on outside click
       document.addEventListener('click', (e) => {
         if (!menu.contains(e.target) && !toggle.contains(e.target)) {
           toggle.setAttribute('aria-expanded', 'false');
@@ -58,7 +46,6 @@
         }
       });
 
-      // Active nav state on scroll
       const observerOptions = {
         root: null,
         rootMargin: '-50% 0px -50% 0px',
@@ -78,7 +65,6 @@
 
       sections.forEach(section => navObserver.observe(section));
 
-      // Nav background on scroll
       let lastScroll = 0;
       window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
@@ -92,7 +78,6 @@
     }
   };
 
-  // ======================== SCROLL REVEAL ========================
   const ScrollReveal = {
     init() {
       const elements = document.querySelectorAll('.reveal');
@@ -112,13 +97,12 @@
 
         elements.forEach(el => observer.observe(el));
       } else {
-        // Fallback: show all
+
         elements.forEach(el => el.classList.add('visible'));
       }
     }
   };
 
-  // ======================== RENDER CAPABILITIES ========================
   const Capabilities = {
     icons: {
       code: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>',
@@ -141,7 +125,6 @@
     }
   };
 
-  // ======================== RENDER PROJECTS ========================
   const Projects = {
     render() {
       this.renderFeatured();
@@ -222,7 +205,6 @@
         btn.addEventListener('click', () => {
           const filter = btn.dataset.filter;
 
-          // Update active state
           buttons.forEach(b => {
             b.classList.remove('active');
             b.setAttribute('aria-selected', 'false');
@@ -230,7 +212,6 @@
           btn.classList.add('active');
           btn.setAttribute('aria-selected', 'true');
 
-          // Filter cards
           cards.forEach(card => {
             if (filter === 'all' || card.dataset.category === filter) {
               card.classList.remove('hidden');
@@ -239,7 +220,6 @@
             }
           });
 
-          // Filter featured
           if (featuredCard) {
             if (filter === 'all' || featuredCard.dataset.category === filter) {
               featured.classList.remove('hidden');
@@ -252,7 +232,6 @@
     }
   };
 
-  // ======================== PROJECT MODAL ========================
   window.ProjectModal = {
     open(projectId) {
       const project = PORTFOLIO_DATA.projects.find(p => p.id === projectId);
@@ -261,7 +240,6 @@
       const modal = document.getElementById('project-modal');
       const body = document.getElementById('modal-body');
 
-      // Build development section
       let devHtml = '';
       if (project.development) {
         const devEntries = Object.entries(project.development);
@@ -280,7 +258,6 @@
         `;
       }
 
-      // Build screenshots section
       let screenshotsHtml = '';
       if (project.screenshots.length > 0) {
         screenshotsHtml = `
@@ -353,7 +330,6 @@
       });
       document.body.style.overflow = 'hidden';
 
-      // Focus trap
       modal.focus();
     },
 
@@ -367,7 +343,6 @@
     }
   };
 
-  // ======================== LIGHTBOX ========================
   window.Lightbox = {
     currentImages: [],
     currentIndex: 0,
@@ -416,7 +391,6 @@
     }
   };
 
-  // ======================== ADAPTIVE STARFIELD ========================
   const Starfield = {
     canvas: null,
     ctx: null,
@@ -426,7 +400,7 @@
     mouse: { x: 0, y: 0 },
 
     init() {
-      // Check prefers-reduced-motion
+
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         return;
       }
@@ -450,7 +424,6 @@
         this.mouse.y = (e.clientY / window.innerHeight - 0.5) * 20;
       }, { passive: true });
 
-      // Pause rendering when tab is hidden to save CPU/battery
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           if (this.animId) {
@@ -507,7 +480,6 @@
         p.y += p.speedY * dt * 60;
         p.pulse += p.pulseSpeed;
 
-        // Wrap around borders
         if (p.x < 0) p.x = this.canvas.width;
         if (p.x > this.canvas.width) p.x = 0;
         if (p.y < 0) p.y = this.canvas.height;
@@ -525,7 +497,6 @@
     }
   };
 
-  // ======================== MECHANICAL SWITCH AUDIO ========================
   const MechanicalAudio = {
     ctx: null,
     masterGain: null,
@@ -551,7 +522,6 @@
         });
       }
 
-      // Eagerly unlock AudioContext on any user interaction across the page
       const unlockAudio = () => {
         this.ensureContext();
         ['pointerdown', 'pointermove', 'touchstart', 'keydown', 'scroll', 'click'].forEach(evt => {
@@ -571,7 +541,6 @@
         if (!this.ctx) {
           this.ctx = new AudioCtx();
 
-          // Master compressor for smooth dynamics and zero clipping
           this.compressor = this.ctx.createDynamicsCompressor();
           this.compressor.threshold.setValueAtTime(-18, this.ctx.currentTime);
           this.compressor.knee.setValueAtTime(12, this.ctx.currentTime);
@@ -579,13 +548,11 @@
           this.compressor.attack.setValueAtTime(0.003, this.ctx.currentTime);
           this.compressor.release.setValueAtTime(0.1, this.ctx.currentTime);
 
-          // Warm low-pass filter to remove harshness and create a creamy mechanical switch sound
           this.filter = this.ctx.createBiquadFilter();
           this.filter.type = 'lowpass';
           this.filter.frequency.setValueAtTime(1800, this.ctx.currentTime);
           this.filter.Q.setValueAtTime(1.2, this.ctx.currentTime);
 
-          // Master volume
           this.masterGain = this.ctx.createGain();
           this.masterGain.gain.setValueAtTime(0.35, this.ctx.currentTime);
 
@@ -625,7 +592,7 @@
       if (!this.enabled) return;
 
       const nowMs = performance.now();
-      if (!force && (nowMs - this.lastPlayTime < 50)) return; // smooth throttle to avoid crackle on rapid sweeps
+      if (!force && (nowMs - this.lastPlayTime < 50)) return;
       this.lastPlayTime = nowMs;
 
       try {
@@ -638,17 +605,15 @@
           this._synthesizeSwitch(ctx);
         }
       } catch (e) {
-        // Safe fallback
+
       }
     },
 
     _synthesizeSwitch(ctx) {
       const now = ctx.currentTime;
-      
-      // Subtle pitch randomization (+/- 4%) so rapid clicks sound organic and mechanical
+
       const pitchVariance = 0.96 + Math.random() * 0.08;
 
-      // 1. Initial Tactile Snap (high-frequency contact impulse, 7ms)
       const snapOsc = ctx.createOscillator();
       const snapGain = ctx.createGain();
       snapOsc.type = 'triangle';
@@ -663,7 +628,6 @@
       snapOsc.start(now);
       snapOsc.stop(now + 0.015);
 
-      // 2. Body Switch Resonance (the smooth "thock", warm tone, 35ms)
       const bodyOsc = ctx.createOscillator();
       const bodyGain = ctx.createGain();
       bodyOsc.type = 'sine';
@@ -678,7 +642,6 @@
       bodyOsc.start(now);
       bodyOsc.stop(now + 0.045);
 
-      // 3. Housing Bottom-Out Sub (weight & punch, 25ms)
       const subOsc = ctx.createOscillator();
       const subGain = ctx.createGain();
       subOsc.type = 'triangle';
@@ -695,7 +658,6 @@
     }
   };
 
-  // ======================== INTERACTIVE 3D MACROPAD & SKILLS ========================
   const SkillsManager = {
     activeSkillId: 'laravel',
     pawToggle: false,
@@ -710,10 +672,8 @@
       this.setupKeyListeners();
       MechanicalAudio.init();
 
-      // Select default skill
       this.selectSkill('laravel', false);
 
-      // Start auto-typing sequence when skills section enters viewport
       this.setupAutoTypingOnInview();
     },
 
@@ -725,7 +685,7 @@
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting && !this.userInteracted && !this.autoTypeTimer) {
-              // Delay slightly for smooth entrance
+
               setTimeout(() => {
                 this.startAutoTyping();
               }, 600);
@@ -754,7 +714,6 @@
           return;
         }
 
-        // Pick random skill different from current
         const candidates = skills.filter(s => s.id !== this.activeSkillId);
         const randomSkill = candidates[Math.floor(Math.random() * candidates.length)];
 
@@ -778,12 +737,12 @@
       if (!keysGrid || !PORTFOLIO_DATA.macropadSkills) return;
 
       keysGrid.innerHTML = PORTFOLIO_DATA.macropadSkills.map((skill, index) => `
-        <button type="button" 
-          class="keycap ${index === 0 ? 'active-selected' : ''}" 
-          data-key="${skill.key.toLowerCase()}" 
-          data-skill-id="${skill.id}" 
-          id="key-${skill.id}" 
-          aria-label="Skill ${skill.name}" 
+        <button type="button"
+          class="keycap ${index === 0 ? 'active-selected' : ''}"
+          data-key="${skill.key.toLowerCase()}"
+          data-skill-id="${skill.id}"
+          id="key-${skill.id}"
+          aria-label="Skill ${skill.name}"
           aria-pressed="${index === 0 ? 'true' : 'false'}"
           style="--key-bg: ${skill.bg}; --key-dark: ${skill.darkBg}; --key-glow: ${skill.glow};">
           <span class="keycap-top">
@@ -792,7 +751,6 @@
         </button>
       `).join('');
 
-      // Add hover (pointerenter/mouseenter/mouseover) and click listeners to all keycaps
       keysGrid.querySelectorAll('.keycap').forEach(btn => {
         const skillId = btn.dataset.skillId;
 
@@ -803,19 +761,16 @@
           }
         };
 
-        // 1. Mouse / Pointer touching key instantly reveals skill contents
         btn.addEventListener('mouseenter', handleHover);
         btn.addEventListener('pointerenter', handleHover);
         btn.addEventListener('mouseover', handleHover);
 
-        // 2. Click / Touch Event
         btn.addEventListener('click', (e) => {
           e.preventDefault();
           this.stopAutoTyping();
           this.selectSkill(skillId, true);
         });
 
-        // 3. Pointerdown for instant tactile response on touch devices
         btn.addEventListener('pointerdown', (e) => {
           if (e.pointerType === 'touch') {
             this.stopAutoTyping();
@@ -824,7 +779,6 @@
         });
       });
 
-      // 4. Support smooth touch dragging across keys on mobile/touch screens
       keysGrid.addEventListener('touchmove', (e) => {
         const touch = e.touches[0];
         if (!touch) return;
@@ -837,7 +791,6 @@
         }
       }, { passive: true });
 
-      // Stop auto typing on hover / touch anywhere on the 3D stage
       const stage = document.getElementById('macropad-stage');
       if (stage) {
         stage.addEventListener('mouseenter', () => this.stopAutoTyping(), { passive: true });
@@ -853,7 +806,6 @@
 
       this.activeSkillId = skillId;
 
-      // Update HUD elements
       const hudCategory = document.getElementById('hud-category');
       const hudTitle = document.getElementById('hud-title');
       const hudDesc = document.getElementById('hud-desc');
@@ -867,7 +819,6 @@
       if (hudDesc) hudDesc.textContent = skill.description;
       if (hudEvidenceText) hudEvidenceText.textContent = skill.evidence;
 
-      // Update project link
       if (hudProjectWrap) {
         hudProjectWrap.style.display = 'flex';
         if (skill.projects && skill.projects.length > 0) {
@@ -877,7 +828,7 @@
           if (hudProjectBtn) {
             hudProjectBtn.onclick = (e) => {
               e.preventDefault();
-              // Scroll to projects section smoothly
+
               const projectsSec = document.getElementById('projects');
               if (projectsSec) {
                 projectsSec.scrollIntoView({ behavior: 'smooth' });
@@ -889,7 +840,6 @@
         }
       }
 
-      // Update Keycaps Active State
       const keycaps = document.querySelectorAll('.keycap');
       keycaps.forEach(cap => {
         const isCurrent = cap.dataset.skillId === skillId;
@@ -897,7 +847,6 @@
         cap.setAttribute('aria-pressed', isCurrent ? 'true' : 'false');
       });
 
-      // Play crisp mechanical click sound on user action
       if (isUserAction) {
         MechanicalAudio.playClick();
       }
@@ -905,22 +854,19 @@
 
     setupKeyListeners() {
       document.addEventListener('keydown', (e) => {
-        // 1. Ignore browser shortcut combos
+
         if (e.ctrlKey || e.altKey || e.metaKey) return;
 
-        // 2. SAFE CHECK: Do NOT trigger when typing in inputs/textareas/selects/contenteditable
         const target = e.target;
         const isTyping = target.matches('input, textarea, select') || target.isContentEditable;
         if (isTyping) return;
 
-        // 3. Do not trigger when modal or lightbox is active
         const modal = document.getElementById('project-modal');
         const lightbox = document.getElementById('lightbox');
         if ((modal && modal.classList.contains('active')) || (lightbox && lightbox.classList.contains('active'))) {
           return;
         }
 
-        // 4. Match key
         const pressedChar = e.key.toLowerCase();
         const skill = PORTFOLIO_DATA.macropadSkills.find(s => s.key.toLowerCase() === pressedChar);
         if (skill) {
@@ -969,20 +915,38 @@
 
       grid.innerHTML = groups.map(group => `
         <div class="skill-group">
-          <h3 class="skill-group-title">${group.title}</h3>
-          ${group.items.map(item => `
-            <div class="skill-item">
-              <div class="skill-item-header">
-                <span class="skill-name">${item.name}</span>
-                ${item.projectEvidence ? `<span class="skill-evidence" title="${item.projectEvidence}">${item.projectEvidence}</span>` : ''}
-              </div>
-              ${item.description ? `<p class="skill-item-desc">${item.description}</p>` : ''}
-            </div>
-          `).join('')}
+          <div class="skill-group-header">
+            <span class="skill-group-dot" aria-hidden="true"></span>
+            <h3 class="skill-group-title">${group.title}</h3>
+          </div>
+          <div class="skill-items-list">
+            ${group.items.map(item => {
+              const evidenceChips = item.projectEvidence
+                ? item.projectEvidence.split(',').map(p => p.trim()).filter(Boolean)
+                : [];
+              return `
+                <div class="skill-item">
+                  <div class="skill-item-top">
+                    <h4 class="skill-name">${item.name}</h4>
+                  </div>
+                  ${item.description ? `<p class="skill-item-desc">${item.description}</p>` : ''}
+                  ${evidenceChips.length > 0 ? `
+                    <div class="skill-evidence-chips">
+                      ${evidenceChips.map(chip => `
+                        <span class="skill-chip">
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                          <span>${chip}</span>
+                        </span>
+                      `).join('')}
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
         </div>
       `).join('');
 
-      // Add gentle audio feedback on detailed grid skill hover
       grid.querySelectorAll('.skill-item').forEach(item => {
         item.addEventListener('mouseenter', () => {
           MechanicalAudio.playClick();
@@ -991,7 +955,6 @@
     }
   };
 
-  // ======================== RENDER EXPERIENCE ========================
   const Experience = {
     render() {
       const timeline = document.getElementById('experience-timeline');
@@ -1008,7 +971,6 @@
     }
   };
 
-  // ======================== RENDER ORGANIZATIONS ========================
   const Organizations = {
     render() {
       const grid = document.getElementById('organization-grid');
@@ -1028,7 +990,6 @@
     }
   };
 
-  // ======================== RENDER EDUCATION ========================
   const Education = {
     render() {
       const cards = document.getElementById('education-cards');
@@ -1044,15 +1005,13 @@
     }
   };
 
-  // ======================== EVENT LISTENERS ========================
   function setupEventListeners() {
-    // Modal close
+
     document.getElementById('modal-close').addEventListener('click', () => ProjectModal.close());
     document.getElementById('project-modal').addEventListener('click', (e) => {
       if (e.target === e.currentTarget) ProjectModal.close();
     });
 
-    // Lightbox controls
     document.getElementById('lightbox-close').addEventListener('click', () => Lightbox.close());
     document.getElementById('lightbox-prev').addEventListener('click', () => Lightbox.prev());
     document.getElementById('lightbox-next').addEventListener('click', () => Lightbox.next());
@@ -1060,9 +1019,8 @@
       if (e.target === e.currentTarget) Lightbox.close();
     });
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      // Close modal on Escape
+
       if (e.key === 'Escape') {
         const lightbox = document.getElementById('lightbox');
         const modal = document.getElementById('project-modal');
@@ -1074,7 +1032,6 @@
         }
       }
 
-      // Lightbox navigation with arrows
       const lightbox = document.getElementById('lightbox');
       if (lightbox.classList.contains('active')) {
         if (e.key === 'ArrowLeft') Lightbox.prev();
@@ -1083,7 +1040,6 @@
     });
   }
 
-  // ======================== INITIALIZE ========================
   function init() {
     ThemeManager.init();
     Navigation.init();
@@ -1096,16 +1052,15 @@
     Education.render();
     setupEventListeners();
 
-    // Init scroll reveal after rendering
     requestAnimationFrame(() => {
       ScrollReveal.init();
     });
   }
 
-  // Run when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
 })();
+
