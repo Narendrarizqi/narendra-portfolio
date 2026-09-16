@@ -32,4 +32,4 @@ http://localhost/PORTFOLIO/
 
 - GitHub: [Narendrarizqi](https://github.com/Narendrarizqi)
 - LinkedIn: [Bagus Narendra Rizqi Ananto](https://www.linkedin.com/in/bagus-narendra-rizqi-ananto-7a8a19280/)
-- Email: [EMAIL_ADDRESS]
+- Email: [EMAIL_ADDRESS](bagusnarendra500@gmail.com)
